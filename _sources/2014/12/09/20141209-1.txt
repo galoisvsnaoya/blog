@@ -1,0 +1,9 @@
+first post
+==========
+いろいろ書いていきます。
+よろしくお願いします。
+
+.. author:: default
+.. categories:: none
+.. tags:: none
+.. comments::
