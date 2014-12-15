@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/minimal5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/tinkerbelizeholesidebar.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
             <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
@@ -44,53 +44,60 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container">
-  <nav role="navigation">
-    <ul><li class="quicklink"><div class="rss">
-        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
-    </div></li><li class="main-nav">
+      <div id="container"><nav>
+    <ul>
+      <li class="main-nav">
           <a href="../../../index.html">Home</a>
         </li>
-      </ul>
+      <li>
+          <a href="../../../archive.html">Archives</a>
+        </li><li class="quicklink"><div class="rss">
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+    </div></li></ul>
   </nav>
-
-  <header role="banner">
+    <header role="banner">
             <hgroup>
               <h1><a href="../../../index.html">galoisvsnaoya.blog</a></h1><h2>I&#39;ll crack your skull open and suck your brains out!!!</h2></hgroup>
           </header>
-      <div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><ul class="related clearfix">
-            <li class="left"></li>
-            <li class="right"><a href="../09/20141209-1.html">first post</a> &raquo; </li>
-        </ul><div class="timestamp postmeta">
+      <div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
             <span>December 15, 2014</span>
         </div>
     <div class="section" id="windows">
 <h1>Windowsのコマンドライン環境を整える</h1>
-<p>Windowsのコマンドライン環境、つまり、Linuxで言うとこのターミナル環境のこと。
-Windowsのコマンドライン環境といえば、昔でいうとコマンドプロンプト、今ならPowerShellだけど、
-どちらもとてもじゃないけど使いやすいとは言えないので、GitBash+MinGWでWindowsのコマンドライン環境を設定します。
-これだと、まぁ本来の目的であるGitHubへの操作や、
-MinGWを導入することによって、よく利用するrsyncコマンドなどがWindows環境でも利用しやすくなるかと思います。</p>
+<div class="line-block">
+<div class="line">Windowsのコマンドライン環境、つまり、Linuxで言うとこのターミナル環境のこと。</div>
+<div class="line">Windowsのコマンドライン環境といえば、昔でいうとコマンドプロンプト、今ならPowerShellだけど、</div>
+<div class="line">どちらもとてもじゃないけど使いやすいとは言えないので、GitBash+MinGWでWindowsのコマンドライン環境を設定します。</div>
+<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindows環境でも利用しやすくなるかと思います。</div>
+</div>
 <div class="section" id="gitbash">
 <h2>1. GitBashのインストール</h2>
-<p><a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a> から Downloads -&gt; Windows をクリックして、インストーラをダウンロードします
-(2014.12.15現在はGit-1.9.4-preview20140929.exeでした)。
-インストーラを実行し、「Select Start Menu Folder」まではデフォルト設定でOKです。</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a> から Downloads -&gt; Windows をクリックして、インストーラをダウンロードします(2014.12.15現在はGit-1.9.4-preview20140929.exeでした)。</div>
+<div class="line">インストーラを実行し、「Select Start Menu Folder」まではデフォルト設定でOKです。</div>
+</div>
 <img alt="../../../_images/20141215-1-1.png" src="../../../_images/20141215-1-1.png" />
-<p>「Adjusting your PATH environment」では、&#8221;Use Git from the Windows Command Prompt&#8221;を選択します。</p>
+<div class="line-block">
+<div class="line">「Adjusting your PATH environment」では、&#8221;Use Git from the Windows Command Prompt&#8221;を選択します。</div>
+</div>
 <img alt="../../../_images/20141215-1-2.png" src="../../../_images/20141215-1-2.png" />
-<p>「Configuring the line ending conversions」では、&#8221;checkout as-is, commit as-is&#8221;を選択します。</p>
+<div class="line-block">
+<div class="line">「Configuring the line ending conversions」では、&#8221;checkout as-is, commit as-is&#8221;を選択します。</div>
+</div>
 <img alt="../../../_images/20141215-1-3.png" src="../../../_images/20141215-1-3.png" />
 </div>
 <div class="section" id="id1">
 <h2>2. 環境変数の確認/設定</h2>
-<p>環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\Git\cmd&#8221;にパスが通っていることを確認します。
-もし、通ってない場合は設定を追加します。</p>
+<div class="line-block">
+<div class="line">環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\Git\cmd&#8221;にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+</div>
 <img alt="../../../_images/20141215-1-4.png" src="../../../_images/20141215-1-4.png" />
 </div>
 <div class="section" id="id2">
 <h2>3. コマンドの実行</h2>
-<p>grepは&#8221;GNU grep 2.4.2&#8221;がインストールされていることが確認できます。</p>
+<div class="line-block">
+<div class="line">grepは&#8221;GNU grep 2.4.2&#8221;がインストールされていることが確認できます。</div>
+</div>
 <div class="highlight-html"><div class="highlight"><pre>$ grep --version
 grep (GNU grep) 2.4.2
 
@@ -99,49 +106,62 @@ This is free software; see the source for copying conditions. There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </pre></div>
 </div>
-<p>diffは&#8221;GNU diff 2.7&#8221;がインストールされていることが確認できます。</p>
+<div class="line-block">
+<div class="line">diffは&#8221;GNU diff 2.7&#8221;がインストールされていることが確認できます。</div>
+</div>
 <div class="highlight-html"><div class="highlight"><pre>$ diff --version
 diff - GNU diffutils version 2.7
 </pre></div>
 </div>
-<p>まだ、この時点ではrsyncは&#8221;command not found&#8221;になっています。</p>
+<div class="line-block">
+<div class="line">まだ、この時点ではrsyncは&#8221;command not found&#8221;になっています。</div>
+</div>
 </div>
 <div class="section" id="mingw">
 <h2>4. MinGWのインストール</h2>
-<p><a class="reference external" href="http://www.mingw.org/">http://www.mingw.org/</a> から Downloads -&gt; Download mingw-get-setup.exe (86.5 kB) をクリックして、
-インストーラをダウンロードします(2014.12.15現在はModifiedが2013-10-04でした)。
-インストーラを実行します(すべてデフォルト設定でOKです)。</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://www.mingw.org/">http://www.mingw.org/</a> から Downloads -&gt; Download mingw-get-setup.exe (86.5 kB) をクリックして、インストーラをダウンロードします(2014.12.15現在はModifiedが2013-10-04でした)。</div>
+<div class="line">インストーラを実行します(すべてデフォルト設定でOKです)。</div>
+</div>
 <img alt="../../../_images/20141215-1-5.png" src="../../../_images/20141215-1-5.png" />
 </div>
 <div class="section" id="id3">
 <h2>5. 環境変数の確認/設定</h2>
-<p>環境変数のシステム変数の&#8221;Path&#8221;で、
-&#8220;{インストールドライブ}:\{インストールフォルダ}\MinGWbin&#8221;にパスが通っていることを確認します。
-もし、通ってない場合は設定を追加します。
-| # 実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</p>
+<div class="line-block">
+<div class="line">環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\MinGWbin&#8221;にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+<div class="line"># 実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
+</div>
 <img alt="../../../_images/20141215-1-6.png" src="../../../_images/20141215-1-6.png" />
 </div>
 <div class="section" id="rsyncgitbash">
 <h2>6. rsyncパッケージのダウンロードとGitBashへの設定</h2>
-<p>GitBashへの設定に必要なファイルは以下の4ファイルです。この4ファイルが含まれるパッケージをすべてダウンロードします。</p>
+<div class="line-block">
+<div class="line">GitBashへの設定に必要なファイルは以下の4ファイルです。この4ファイルが含まれるパッケージをすべてダウンロードします。</div>
+</div>
 <ul class="simple">
 <li>rsync.exe (Package：msys-rsync/Class:bin)</li>
 <li>msys-iconv-2.dll (Package：msys-libiconv/Class:dll)</li>
 <li>msys-intl-8.dll (Package：msys-libintl/Class:dll)</li>
 <li>msys-popt-0.dll (Package：msys-libport/Class:dll)</li>
 </ul>
-<p>ちなみに、iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界)、
-intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界)、
-poptは入力されたコマンドラインを構文解析するためのライブラリです。</p>
+<div class="line-block">
+<div class="line">ちなみに、</div>
+<div class="line">iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界)、</div>
+<div class="line">intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界)、</div>
+<div class="line">poptは入力されたコマンドラインを構文解析するためのライブラリです。</div>
+</div>
 <img alt="../../../_images/20141215-1-7.png" src="../../../_images/20141215-1-7.png" />
-<p>ダウンロードすると、&#8221;{インストールドライブ}:\{インストールフォルダ}\MinGW\msys\1.0\bin&#8221;に、
-上記4ファイルはダウンロードされていますので、これをコピーし、
-&#8220;{インストールドライブ}:\{インストールフォルダ}\Git\bin&#8221;にペーストします。</p>
+<div class="line-block">
+<div class="line">ダウンロードすると、&#8221;{インストールドライブ}:\{インストールフォルダ}\MinGW\msys\1.0\bin&#8221;に、上記4ファイルはダウンロードされていますので、</div>
+<div class="line">これをコピーし、&#8221;{インストールドライブ}:\{インストールフォルダ}\Git\bin&#8221;にペーストします。</div>
+</div>
 <img alt="../../../_images/20141215-1-8.png" src="../../../_images/20141215-1-8.png" />
 </div>
 <div class="section" id="id4">
 <h2>7. コマンドの実行</h2>
-<p>rsyncは&#8221;rsync  version 3.0.8  protocol version 30&#8221;がインストールされていることが確認できます。</p>
+<div class="line-block">
+<div class="line">rsyncは&#8221;rsync  version 3.0.8  protocol version 30&#8221;がインストールされていることが確認できます。</div>
+</div>
 <div class="highlight-html"><div class="highlight"><pre>$ rsync --version
 rsync  version 3.0.8  protocol version 30
 Copyright (C) 1996-2011 by Andrew Tridgell, Wayne Davison, and others.
@@ -156,7 +176,9 @@ are welcome to redistribute it under certain conditions.  See the GNU
 General Public Licence for details.
 </pre></div>
 </div>
-<p>追加したいコマンドはこの手順で追加できますので、rsync以外にも追加したいコマンドあれば。</p>
+<div class="line-block">
+<div class="line">追加したいコマンドはこの手順で追加できますので、rsync以外にも追加したいコマンドあれば。</div>
+</div>
 </div>
 </div>
 
@@ -198,7 +220,67 @@ General Public Licence for details.
     </form>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, galoisvsnaoya. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2014, galoisvsnaoya. Powered by <a href="http://www.tinkerer.me/" target="_blank">Tinkerer</a> and <a href="http://sphinx.pocoo.org/" target="_blank">Sphinx</a>. <a href="https://pypi.python.org/pypi/sphinxjp.themes.tinkerbelizeholesidebar" target="_blank">This theme</a> is originally designed by <a href="http://naoiwata.github.com/" target="_blank">naoiwata</a>.</footer>
+  <script type="text/javascript">
+    var FixZoom,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    FixZoom = (function() {
+      var ua;
+      ua = window.navigator.userAgent.toLowerCase();
+      function FixZoom() {
+        this.on_resize = __bind(this.on_resize, this);
+        this.dom_id = 'wrap';
+        this.max_width = 640;
+        this.device_width = null;
+        this.device_height = null;
+        this.window_width = window.innerWidth;
+        this.window_height = window.innerHeight;
+        this.iphone = ua.indexOf('iphone') > -1;
+        this.ipod = ua.indexOf('ipod') > -1;
+        this.ipad = ua.indexOf('ipad') > -1;
+        this.android = ua.indexOf('android') > -1;
+      }
+      FixZoom.prototype.init = function(dom_id, max) {
+        var _this = this;
+        this.dom_id = dom_id;
+        if (max > 0) {
+          this.max_width = max;
+        }
+        setTimeout(function() {
+          window.scrollTo(0, 1);
+          return _this.on_resize();
+        }, 100);
+        this.set_ua();
+        this.on_resize();
+        window.addEventListener('resize', this.on_resize);
+      };
+      FixZoom.prototype.on_resize = function() {
+        var wrapper;
+        if (!this.iphone && !this.ipod && !this.android) {
+          return;
+        }
+        this.window_width = window.innerWidth;
+        wrapper = document.getElementById(this.dom_id);
+        if (this.window_width >= this.max_width) {
+          wrapper.style.width = this.max_width + 'px';
+          wrapper.style.margin = '0 auto';
+        } else {
+          wrapper.style.zoom = this.window_width / this.max_width;
+        }
+      };
+      FixZoom.prototype.set_ua = function() {
+        if (this.iphone || this.android || this.ipad || this.ipod) {
+          document.body.className += ' sp';
+        } else {
+          document.body.className += ' pc';
+        }
+      };
+      return FixZoom;
+    })();
+    window.fix_zoom = new FixZoom();
+    $('head').append('<meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />');
+    fix_zoom.init('container', 640);
+  </script></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
