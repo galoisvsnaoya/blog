@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="This is an awesome blog">
         <meta name="viewport" content="width=device-width">
-        <title>Windowsのコマンドライン環境を整える &mdash; galoisvsnaoya.blog</title>
+        <title>Windowsのシェル環境を整える &mdash; galoisvsnaoya.blog</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -63,12 +63,12 @@
             <span>December 15, 2014</span>
         </div>
     <div class="section" id="windows">
-<h1>Windowsのコマンドライン環境を整える</h1>
+<h1>Windowsのシェル環境を整える</h1>
 <div class="line-block">
-<div class="line">Windowsのコマンドライン環境、つまり、Linuxで言うとこのターミナル環境のこと。</div>
-<div class="line">Windowsのコマンドライン環境といえば、昔でいうとコマンドプロンプト、今ならPowerShellだけど、</div>
-<div class="line">どちらもとてもじゃないけど使いやすいとは言えないので、GitBash+MinGWでWindowsのコマンドライン環境を設定します。</div>
-<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindows環境でも利用しやすくなるかと思います。</div>
+<div class="line">Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。</div>
+<div class="line">そこで、WindowsでもBashシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。</div>
+<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。</div>
+<div class="line">※ただ、PowerShellは実はこれでしかできないこともあったりするので、またどこかのタイミングでまとめたいなぁ。</div>
 </div>
 <div class="section" id="gitbash">
 <h2>1. GitBashのインストール</h2>
@@ -129,7 +129,7 @@ diff - GNU diffutils version 2.7
 <h2>5. 環境変数の確認/設定</h2>
 <div class="line-block">
 <div class="line">環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\MinGW\bin&#8221;にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
-<div class="line"># 実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
+<div class="line">※実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
 </div>
 <img alt="../../../_images/20141215-1-6.png" src="../../../_images/20141215-1-6.png" />
 </div>
@@ -207,7 +207,7 @@ General Public Licence for details.
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="#">Windowsのコマンドライン環境を整える</a>
+            <a href="#">Windowsのシェル環境を整える</a>
         </li><li>
             <a href="../09/20141209-1.html">first post</a>
         </li></ul>

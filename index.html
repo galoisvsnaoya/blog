@@ -63,12 +63,12 @@
             <span>December 15, 2014</span>
         </div>
         <div class="section">
-            <h1><a href="2014/12/15/20141215-1.html">Windowsのコマンドライン環境を整える</a></h1>
+            <h1><a href="2014/12/15/20141215-1.html">Windowsのシェル環境を整える</a></h1>
 <div class="line-block">
-<div class="line">Windowsのコマンドライン環境、つまり、Linuxで言うとこのターミナル環境のこと。</div>
-<div class="line">Windowsのコマンドライン環境といえば、昔でいうとコマンドプロンプト、今ならPowerShellだけど、</div>
-<div class="line">どちらもとてもじゃないけど使いやすいとは言えないので、GitBash+MinGWでWindowsのコマンドライン環境を設定します。</div>
-<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindows環境でも利用しやすくなるかと思います。</div>
+<div class="line">Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。</div>
+<div class="line">そこで、WindowsでもBashシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。</div>
+<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。</div>
+<div class="line">※ただ、PowerShellは実はこれでしかできないこともあったりするので、またどこかのタイミングでまとめたいなぁ。</div>
 </div>
 <div class="section" id="gitbash">
 <h2>1. GitBashのインストール</h2>
@@ -129,7 +129,7 @@ diff - GNU diffutils version 2.7
 <h2>5. 環境変数の確認/設定</h2>
 <div class="line-block">
 <div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\MinGW\bin”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
-<div class="line"># 実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
+<div class="line">※実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
 </div>
 <img alt="../../../_images/20141215-1-6.png" src="_images/20141215-1-6.png"/>
 </div>
@@ -222,7 +222,7 @@ General Public Licence for details.
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2014/12/15/20141215-1.html">Windowsのコマンドライン環境を整える</a>
+            <a href="2014/12/15/20141215-1.html">Windowsのシェル環境を整える</a>
         </li><li>
             <a href="2014/12/09/20141209-1.html">first post</a>
         </li></ul>
