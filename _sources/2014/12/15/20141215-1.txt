@@ -4,7 +4,7 @@ Windowsのシェル環境を整える
 | Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。
 | そこで、WindowsでもBashシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。
 | これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。
-| ※ただ、PowerShellは実はこれでしかできないこともあったりするので、またどこかのタイミングでまとめたいなぁ。
+| ※ただ、PowerShellはPowerCLIっていうvSphere(ESXi等)の管理ツールの言語になってたりするので、これはこれで重要。いつかまとめよう…。
 
 
 1. GitBashのインストール
