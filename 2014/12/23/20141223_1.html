@@ -17,28 +17,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="This is an awesome blog">
         <meta name="viewport" content="width=device-width">
-        <title>Home &mdash; galoisvsnaoya.blog</title>
-            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
-            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
-            <link rel="stylesheet" href="_static/main.css" type="text/css">
-            <link rel="stylesheet" href="_static/tinkerbelizeholesidebar.css" type="text/css">
-            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
-        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <title>Vagrantで仮想マシンを作成する &mdash; galoisvsnaoya.blog</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/tinkerbelizeholesidebar.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="_static/plugins.js"></script>
-        <script src="_static/main.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="WindowsのBashシェル環境を整える" href="../15/20141215-1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../../../',
         VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script></head>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script></head>
     <body role="document">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -47,23 +47,23 @@
       <div id="container"><nav>
     <ul>
       <li class="main-nav">
-          <a href="#">Home</a>
+          <a href="../../../index.html">Home</a>
         </li>
       <li>
-          <a href="archive.html">Archives</a>
+          <a href="../../../archive.html">Archives</a>
         </li><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li></ul>
   </nav>
     <header role="banner">
             <hgroup>
-              <h1><a href="#">galoisvsnaoya.blog</a></h1><h2>I&#39;ll crack your skull open and suck your brains out!!!</h2></hgroup>
+              <h1><a href="../../../index.html">galoisvsnaoya.blog</a></h1><h2>I&#39;ll crack your skull open and suck your brains out!!!</h2></hgroup>
           </header>
       <div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
             <span>December 23, 2014</span>
         </div>
-        <div class="section">
-            <h1><a href="2014/12/23/20141223_1.html">Vagrantで仮想マシンを作成する</a></h1>
+    <div class="section" id="vagrant">
+<h1>Vagrantで仮想マシンを作成する</h1>
 <div class="line-block">
 <div class="line">アプリ開発のプロジェクトやインフラ技術検証を要するプロジェクトを複数掛け持ちすると、それぞれ必要なアーキテクチャが異なるがゆえ、</div>
 <div class="line">ローカルの開発環境/検証環境はぐちゃぐちゃになり、いったいこれはバグなのかバグでないのかよくわからないことになったり、</div>
@@ -77,14 +77,14 @@
 <div class="line"><a class="reference external" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> から Downloads -&gt; VirtualBox x.x.xx for Windows hosts -&gt; をクリックして、インストーラをダウンロードします(2014.12.23現在はVirtualBox-4.3.20-96997-Win.exeでした)。</div>
 <div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
 </div>
-<img alt="../../../_images/20141223-1-1.png" src="_images/20141223-1-1.png"/>
+<img alt="../../../_images/20141223-1-1.png" src="../../../_images/20141223-1-1.png" />
 </div>
 <div class="section" id="id1">
 <h2>2. 環境変数の確認/設定</h2>
 <div class="line-block">
-<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\VirtualBox\”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+<div class="line">環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\VirtualBox\&#8221;にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
 </div>
-<img alt="../../../_images/20141223-1-2.png" src="_images/20141223-1-2.png"/>
+<img alt="../../../_images/20141223-1-2.png" src="../../../_images/20141223-1-2.png" />
 <ol class="arabic simple" start="3">
 <li>Vagrantのインストール</li>
 </ol>
@@ -92,14 +92,14 @@
 <div class="line"><a class="reference external" href="https://www.vagrantup.com/">https://www.vagrantup.com/</a> から Download -&gt; Windows -&gt; をクリックして、インストーラをダウンロードします(2014.12.23現在はvagrant_1.6.5.msiでした)。</div>
 <div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
 </div>
-<img alt="../../../_images/20141223-1-3.png" src="_images/20141223-1-3.png"/>
+<img alt="../../../_images/20141223-1-3.png" src="../../../_images/20141223-1-3.png" />
 </div>
 <div class="section" id="id2">
 <h2>4. 環境変数の確認/設定</h2>
 <div class="line-block">
-<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\Vagrant\bin\”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+<div class="line">環境変数のシステム変数の&#8221;Path&#8221;で、&#8221;{インストールドライブ}:\{インストールフォルダ}\Vagrant\bin\&#8221;にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
 </div>
-<img alt="../../../_images/20141223-1-4.png" src="_images/20141223-1-4.png"/>
+<img alt="../../../_images/20141223-1-4.png" src="../../../_images/20141223-1-4.png" />
 <div class="line-block">
 <div class="line">設定が完了したら、GitBashを起動し、以下のコマンドを実行すると、Vagrantがインストールされていることが確認できます。</div>
 <div class="line">参考：GitBashの設定 :doc: <a class="reference external" href="http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html">http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html</a></div>
@@ -114,7 +114,7 @@ Vagrant 1.6.5
 <div class="line-block">
 <div class="line">では、Vagrantを使って、実際にVirtualBox上に仮想マシンをクローンしていきます。</div>
 <div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: <a class="reference external" href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a> より、</div>
-<div class="line">今回は、”CentOS 6.5 x86_64”とすることにします。</div>
+<div class="line">今回は、&#8221;CentOS 6.5 x86_64&#8221;とすることにします。</div>
 </div>
 <div class="section" id="id3">
 <h3>1) フォルダ作成</h3>
@@ -127,7 +127,7 @@ $ cd ~/vagrant
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">“CentOS 6.5 x86_64”の仮想マシンを登録するフォルダを作成し、そこに移動します。</div>
+<div class="line">&#8220;CentOS 6.5 x86_64&#8221;の仮想マシンを登録するフォルダを作成し、そこに移動します。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ mkdir -p centos65x8664base
 $ cd ~/vagrant/centos65x8664base
@@ -137,20 +137,20 @@ $ cd ~/vagrant/centos65x8664base
 <div class="section" id="box">
 <h3>2) Boxファイルのダウンロード</h3>
 <div class="line-block">
-<div class="line">“CentOS 6.5 x86_64”のBoxファイルをダウンロードします。</div>
+<div class="line">&#8220;CentOS 6.5 x86_64&#8221;のBoxファイルをダウンロードします。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant box add vagrant-centos65x8664 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
-==&gt; box: Adding box 'centos65x8664base' (v0) for provider:
+==&gt; box: Adding box &#39;centos65x8664base&#39; (v0) for provider:
 box: Downloading: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 box: Progress: 100% (Rate: 3033k/s, Estimated time remaining: --:--:--)
-==&gt; box: Successfully added box 'centos65x8664base' (v0) for 'virtualbox'!
+==&gt; box: Successfully added box &#39;centos65x8664base&#39; (v0) for &#39;virtualbox&#39;!
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">Boxファイルがダウンロードできたら、以下のコマンドで、VagrantのBoxListに追加されていることを確認します。</div>
-<div class="line">“centsos65x8664base”はBox名、”virtualbox”はProviderを意味します。</div>
-<div class="line">“0”は”centos65x8664base”というBox名の中でそのBoxファイルがListの何番目かを意味するのかな…たぶん。ここはあんまし自信なし。</div>
-<div class="line">ちなみに、Boxファイルは、”{カレントドライブ}:\Users\{ユーザ名}\.vagrant.d\boxes\centos65x8664base\0\virtualbox”ダウンロードされています。</div>
+<div class="line">&#8220;centsos65x8664base&#8221;はBox名、&#8221;virtualbox&#8221;はProviderを意味します。</div>
+<div class="line">&#8220;0&#8221;は&#8221;centos65x8664base&#8221;というBox名の中でそのBoxファイルがListの何番目かを意味するのかな…たぶん。ここはあんまし自信なし。</div>
+<div class="line">ちなみに、Boxファイルは、&#8221;{カレントドライブ}:\Users\{ユーザ名}\.vagrant.d\boxes\centos65x8664base\0\virtualbox&#8221;ダウンロードされています。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant box list
 centos65x8664base (virtualbox, 0)
@@ -171,7 +171,7 @@ the comments in the Vagrantfile as well as documentation on
 </div>
 <div class="line-block">
 <div class="line">初期化すると、ダウンロードしたBoxファイルを、</div>
-<div class="line">指定されたBox名”centsos65x8664base”でProvider”virtualbox”に仮想マシンとして追加するためのVagrantfileと呼ばれる定義ファイルが作成されます。</div>
+<div class="line">指定されたBox名&#8221;centsos65x8664base&#8221;でProvider&#8221;virtualbox&#8221;に仮想マシンとして追加するためのVagrantfileと呼ばれる定義ファイルが作成されます。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ ls
 Vagrantfile
@@ -184,9 +184,9 @@ Vagrantfile
 <div class="highlight-html"><div class="highlight"><pre># -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+# Vagrantfile API/syntax version. Don&#39;t touch unless you know what you&#39;re doing!
 
-VAGRANTFILE_API_VERSION = "2"
+VAGRANTFILE_API_VERSION = &quot;2&quot;
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -194,7 +194,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos65x8664base"
+  config.vm.box = &quot;centos65x8664base&quot;
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -203,17 +203,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # accessing &quot;localhost:8080&quot; will access port 80 on the guest machine.
+  # config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  # config.vm.network "public_network"
+  # config.vm.network &quot;public_network&quot;
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -223,37 +223,37 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder &quot;../data&quot;, &quot;/vagrant_data&quot;
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Don't boot with headless mode
+  # config.vm.provider &quot;virtualbox&quot; do |vb|
+  #   # Don&#39;t boot with headless mode
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+  #   vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, &quot;1024&quot;]
   # end
   #
-  # View the documentation for the provider you're using for more
+  # View the documentation for the provider you&#39;re using for more
   # information on available options.
 
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a
   # policy server and optionally a policy file to run:
   #
-  # config.vm.provision "cfengine" do |cf|
+  # config.vm.provision &quot;cfengine&quot; do |cf|
   #   cf.am_policy_hub = true
-  #   # cf.run_file = "motd.cf"
+  #   # cf.run_file = &quot;motd.cf&quot;
   # end
   #
   # You can also configure and bootstrap a client to an existing
   # policy server:
   #
-  # config.vm.provision "cfengine" do |cf|
-  #   cf.policy_server_address = "10.0.2.15"
+  # config.vm.provision &quot;cfengine&quot; do |cf|
+  #   cf.policy_server_address = &quot;10.0.2.15&quot;
   # end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
@@ -261,24 +261,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # You will need to create the manifests directory and a manifest in
   # the file default.pp in the manifests_path directory.
   #
-  # config.vm.provision "puppet" do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "default.pp"
+  # config.vm.provision &quot;puppet&quot; do |puppet|
+  #   puppet.manifests_path = &quot;manifests&quot;
+  #   puppet.manifest_file  = &quot;default.pp&quot;
   # end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  # config.vm.provision "chef_solo" do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
+  # config.vm.provision &quot;chef_solo&quot; do |chef|
+  #   chef.cookbooks_path = &quot;../my-recipes/cookbooks&quot;
+  #   chef.roles_path = &quot;../my-recipes/roles&quot;
+  #   chef.data_bags_path = &quot;../my-recipes/data_bags&quot;
+  #   chef.add_recipe &quot;mysql&quot;
+  #   chef.add_role &quot;web&quot;
   #
   #   # You may also specify custom JSON attributes:
-  #   chef.json = { mysql_password: "foo" }
+  #   chef.json = { mysql_password: &quot;foo&quot; }
   # end
 
   # Enable provisioning with chef server, specifying the chef server URL,
@@ -291,18 +291,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # HTTP instead of HTTPS depending on your configuration. Also change the
   # validation key to validation.pem.
   #
-  # config.vm.provision "chef_client" do |chef|
-  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
-  #   chef.validation_key_path = "ORGNAME-validator.pem"
+  # config.vm.provision &quot;chef_client&quot; do |chef|
+  #   chef.chef_server_url = &quot;https://api.opscode.com/organizations/ORGNAME&quot;
+  #   chef.validation_key_path = &quot;ORGNAME-validator.pem&quot;
   # end
   #
-  # If you're using the Opscode platform, your validator client is
+  # If you&#39;re using the Opscode platform, your validator client is
   # ORGNAME-validator, replacing ORGNAME with your organization name.
   #
   # If you have your own Chef Server, the default validation client name is
   # chef-validator, unless you changed the configuration.
   #
-  #   chef.validation_client_name = "ORGNAME-validator"
+  #   chef.validation_client_name = &quot;ORGNAME-validator&quot;
 end
 </pre></div>
 </div>
@@ -311,11 +311,11 @@ end
 <h3>4) 仮想マシンの起動</h3>
 <div class="line-block">
 <div class="line">仮想マシンを起動します。</div>
-<div class="line">起動に失敗する場合は、BIOS設定で”Intel VTテクノロジー”などが無効になっている可能性があるので有効化しておいてください。</div>
+<div class="line">起動に失敗する場合は、BIOS設定で&#8221;Intel VTテクノロジー&#8221;などが無効になっている可能性があるので有効化しておいてください。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant up
-Bringing machine 'default' up with 'virtualbox' provider...
-==&gt; default: Importing base box 'centos65x8664base'...
+Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
+==&gt; default: Importing base box &#39;centos65x8664base&#39;...
 ==&gt; default: Matching MAC address for NAT networking...
 ==&gt; default: Setting the name of the VM: centos65x8664base_default_1419175685395_89423
 ==&gt; default: Clearing any previously set network interfaces...
@@ -353,7 +353,7 @@ simply run `vagrant up`.
 <div class="line-block">
 <div class="line">VirtulBoxを起動すると、以下のように仮想マシンが追加され起動中となっていることが確認できます。</div>
 </div>
-<img alt="../../../_images/20141223-1-5.png" src="_images/20141223-1-5.png"/>
+<img alt="../../../_images/20141223-1-5.png" src="../../../_images/20141223-1-5.png" />
 </div>
 <div class="section" id="id6">
 <h3>5) 仮想マシンへのログイン/ログアウト</h3>
@@ -445,10 +445,10 @@ $ cd ~/vagrant/centos65x8664dev1
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ mv ~/vagrant/centos65x8664base/package.box ./
 $ vagrant box add centos65x8664dev1 package.box
-==&gt; box: Adding box 'centos65x8664dev1' (v0) for provider:
+==&gt; box: Adding box &#39;centos65x8664dev1&#39; (v0) for provider:
     box: Downloading: file://c:/Users/9656749/vagrant/centos65x8664dev1/package.box
     box: Progress: 100% (Rate: 267M/s, Estimated time remaining: --:--:--)
-==&gt; box: Successfully added box 'centos65x8664dev1' (v0) for 'virtualbox'!
+==&gt; box: Successfully added box &#39;centos65x8664dev1&#39; (v0) for &#39;virtualbox&#39;!
 </pre></div>
 </div>
 <div class="line-block">
@@ -482,8 +482,8 @@ Vagrantfile
 <div class="line">仮想マシンを起動します。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant up
-Bringing machine 'default' up with 'virtualbox' provider...
-==&gt; default: Importing base box 'centos65x8664dev1'...
+Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
+==&gt; default: Importing base box &#39;centos65x8664dev1&#39;...
 ==&gt; default: Matching MAC address for NAT networking...
 ==&gt; default: Setting the name of the VM: centos65x8664dev1_default_141917668894_96328
 ==&gt; default: Clearing any previously set network interfaces...
@@ -520,7 +520,7 @@ simply run `vagrant up`.
 <div class="line-block">
 <div class="line">VirtulBoxを起動すると、以下のように仮想マシンが追加され起動中となっていることが確認できます。</div>
 </div>
-<img alt="../../../_images/20141223-1-6.png" src="_images/20141223-1-6.png"/>
+<img alt="../../../_images/20141223-1-6.png" src="../../../_images/20141223-1-6.png" />
 </div>
 <div class="section" id="id13">
 <h3>6) 仮想マシンへのログイン/ログアウト</h3>
@@ -577,14 +577,14 @@ The VM is powered off. To restart the VM, simply run `vagrant up`
 <div class="line">複製した仮想マシンが不要になったら、削除をします。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant destroy
-default: Are you sure you want to destroy the 'default' VM? [y/N] y
+default: Are you sure you want to destroy the &#39;default&#39; VM? [y/N] y
 ==&gt; default: Destroying VM and associated drives...
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">仮想マシンを削除すると、VirtualBox上から仮想マシンは消えます。</div>
 </div>
-<img alt="../../../_images/20141223-1-7.png" src="_images/20141223-1-7.png"/>
+<img alt="../../../_images/20141223-1-7.png" src="../../../_images/20141223-1-7.png" />
 <div class="line-block">
 <div class="line">ですが、まだ、VagrantのBoxListから削除されているわけではありません。</div>
 </div>
@@ -603,7 +603,7 @@ centos65x8664dev1 (virtualbox, 0)
 WARNING: The second argument to `vagrant box remove`
 is deprecated. Please use the --provider flag. This
 feature will stop working in the next version.
-Removing box 'centos65x8664dev1' (v0) with provider 'virtualbox'...
+Removing box &#39;centos65x8664dev1&#39; (v0) with provider &#39;virtualbox&#39;...
 
 $ vagrant box list
 centos65x8664base (virtualbox, 0)
@@ -611,194 +611,43 @@ centos65x8664base (virtualbox, 0)
 </div>
 </div>
 </div>
+</div>
 
-        </div>
-        <div class="postmeta">
+    <div class="postmeta">
         <div class="author">
             <span>Posted by galoisvsnaoya</span>
         </div>
         <div class="categories">
             <span>
                 Filed under:
-                <a href="categories/tech.html">tech</a></span>
+                <a href="../../../categories/tech.html">tech</a></span>
         </div>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/vagrant.html">vagrant</a></span>
+                <a href="../../../tags/vagrant.html">vagrant</a></span>
         </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>December 15, 2014</span>
         </div>
-        <div class="section">
-            <h1><a href="2014/12/15/20141215-1.html">WindowsのBashシェル環境を整える</a></h1>
-<div class="line-block">
-<div class="line">Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。</div>
-<div class="line">そこで、Windowsでもシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。</div>
-<div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。</div>
-<div class="line">※ただ、PowerShellはPowerCLIっていうvSphere(ESXi等)の管理ツールの言語になってたりするので、これはこれで重要。いつかまとめよう…。</div>
-</div>
-<div class="section" id="gitbash">
-<h2>1. GitBashのインストール</h2>
-<div class="line-block">
-<div class="line"><a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a> から Downloads -&gt; Windows をクリックして、インストーラをダウンロードします(2014.12.15現在はGit-1.9.4-preview20140929.exeでした)。</div>
-<div class="line">インストーラを実行し、「Select Start Menu Folder」まではデフォルト設定でOKです。</div>
-</div>
-<img alt="../../../_images/20141215-1-1.png" src="_images/20141215-1-1.png"/>
-<div class="line-block">
-<div class="line">「Adjusting your PATH environment」では、”Use Git from the Windows Command Prompt”を選択します。</div>
-</div>
-<img alt="../../../_images/20141215-1-2.png" src="_images/20141215-1-2.png"/>
-<div class="line-block">
-<div class="line">「Configuring the line ending conversions」では、”checkout as-is, commit as-is”を選択します。</div>
-</div>
-<img alt="../../../_images/20141215-1-3.png" src="_images/20141215-1-3.png"/>
-</div>
-<div class="section" id="id1">
-<h2>2. 環境変数の確認/設定</h2>
-<div class="line-block">
-<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\Git\cmd”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
-</div>
-<img alt="../../../_images/20141215-1-4.png" src="_images/20141215-1-4.png"/>
-</div>
-<div class="section" id="id2">
-<h2>3. コマンドの実行</h2>
-<div class="line-block">
-<div class="line">grepは”GNU grep 2.4.2”がインストールされていることが確認できます。</div>
-</div>
-<div class="highlight-html"><div class="highlight"><pre>$ grep --version
-grep (GNU grep) 2.4.2
-
-Copyright 1988, 1992-1999, 2000 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions. There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">diffは”GNU diff 2.7”がインストールされていることが確認できます。</div>
-</div>
-<div class="highlight-html"><div class="highlight"><pre>$ diff --version
-diff - GNU diffutils version 2.7
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">まだ、この時点ではrsyncは”command not found”になっています。</div>
-</div>
-</div>
-<div class="section" id="mingw">
-<h2>4. MinGWのインストール</h2>
-<div class="line-block">
-<div class="line"><a class="reference external" href="http://www.mingw.org/">http://www.mingw.org/</a> から Downloads -&gt; Download mingw-get-setup.exe (86.5 kB) をクリックして、インストーラをダウンロードします(2014.12.15現在はModifiedが2013-10-04でした)。</div>
-<div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
-</div>
-<img alt="../../../_images/20141215-1-5.png" src="_images/20141215-1-5.png"/>
-</div>
-<div class="section" id="id3">
-<h2>5. 環境変数の確認/設定</h2>
-<div class="line-block">
-<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\MinGW\bin”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
-<div class="line">※実は要らないと言えば要らないのですが、環境変数の設定を癖付けるためということで…。</div>
-</div>
-<img alt="../../../_images/20141215-1-6.png" src="_images/20141215-1-6.png"/>
-</div>
-<div class="section" id="rsyncgitbash">
-<h2>6. rsyncパッケージのダウンロードとGitBashへの設定</h2>
-<div class="line-block">
-<div class="line">GitBashへの設定に必要なファイルは以下の4ファイルです。この4ファイルが含まれるパッケージをすべてダウンロードします。</div>
-</div>
-<ul class="simple">
-<li>rsync.exe (Package：msys-rsync/Class:bin)</li>
-<li>msys-iconv-2.dll (Package：msys-libiconv/Class:dll)</li>
-<li>msys-intl-8.dll (Package：msys-libintl/Class:dll)</li>
-<li>msys-popt-0.dll (Package：msys-libport/Class:dll)</li>
-</ul>
-<div class="line-block">
-<div class="line">ちなみに、iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界の話)、</div>
-<div class="line">intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界の話)、</div>
-<div class="line">poptは入力されたコマンドラインを構文解析するためのライブラリです。</div>
-</div>
-<img alt="../../../_images/20141215-1-7.png" src="_images/20141215-1-7.png"/>
-<div class="line-block">
-<div class="line">ダウンロードすると、”{インストールドライブ}:\{インストールフォルダ}\MinGW\msys\1.0\bin”に、上記4ファイルはダウンロードされていますので、</div>
-<div class="line">これをコピーし、”{インストールドライブ}:\{インストールフォルダ}\Git\bin”にペーストします。</div>
-</div>
-<img alt="../../../_images/20141215-1-8.png" src="_images/20141215-1-8.png"/>
-</div>
-<div class="section" id="id4">
-<h2>7. コマンドの実行</h2>
-<div class="line-block">
-<div class="line">rsyncは”rsync  version 3.0.8  protocol version 30”がインストールされていることが確認できます。</div>
-</div>
-<div class="highlight-html"><div class="highlight"><pre>$ rsync --version
-rsync  version 3.0.8  protocol version 30
-Copyright (C) 1996-2011 by Andrew Tridgell, Wayne Davison, and others.
-Web site: http://rsync.samba.org/
-Capabilities:
-    32-bit files, 32-bit inums, 32-bit timestamps, 64-bit long ints,
-    socketpairs, hardlinks, symlinks, no IPv6, batchfiles, inplace,
-    append, ACLs, no xattrs, iconv, no symtimes
-
-rsync comes with ABSOLUTELY NO WARRANTY.  This is free software, and you
-are welcome to redistribute it under certain conditions.  See the GNU
-General Public Licence for details.
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">追加したいコマンドはこの手順で追加できますので、rsync以外にも追加したいコマンドあれば。</div>
-</div>
-</div>
-
-        </div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by galoisvsnaoya</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/tech.html">tech</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/shell.html">shell</a></span>
-        </div>
-        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>December 09, 2014</span>
-        </div>
-        <div class="section">
-            <h1><a href="2014/12/09/20141209-1.html">first post</a></h1>
-<div class="line-block">
-<div class="line">いろいろ書いていきます。よろしくお願いします。</div>
-<div class="line">ご質問はTwitterに返信してください。すぐ気づくと思います。</div>
-</div>
-
-        </div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by galoisvsnaoya</span>
-        </div>
-        
-        
-        </div><div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
-    </div></article><aside class="sidebar"><section><div class="widget">
+    <ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../15/20141215-1.html">WindowsのBashシェル環境を整える</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Twitter</h1>
     <a class="twitter-timeline"  href="https://twitter.com/galoisvsnaoya" data-widget-id="544225046072266753">@galoisvsnaoyaさんのツイート</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2014/12/23/20141223_1.html">Vagrantで仮想マシンを作成する</a>
+            <a href="#">Vagrantで仮想マシンを作成する</a>
         </li><li>
-            <a href="2014/12/15/20141215-1.html">WindowsのBashシェル環境を整える</a>
+            <a href="../15/20141215-1.html">WindowsのBashシェル環境を整える</a>
         </li><li>
-            <a href="2014/12/09/20141209-1.html">first post</a>
+            <a href="../09/20141209-1.html">first post</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
     <h1><a href="#searchbox">Search</a></h1>
-    <form action="search.html" method="get">
+    <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
     </form>

@@ -5,16 +5,573 @@
         <link>http://galoisvsnaoya.github.com/blog/</link>
         <description>I'll crack your skull open and suck your brains out!!!</description>
         <language>en-us</language>
-        <pubDate>Mon, 15 Dec 2014 00:00:00 +0900</pubDate>
+        <pubDate>Tue, 23 Dec 2014 00:00:00 +0900</pubDate>
         
+        <item>
+            <link>http://galoisvsnaoya.github.com/blog/2014/12/23/20141223_1.html</link>
+            <guid>http://galoisvsnaoya.github.com/blog/2014/12/23/20141223_1.html</guid>
+            <title><![CDATA[Vagrantで仮想マシンを作成する]]></title>
+            <description><![CDATA[<h1>Vagrantで仮想マシンを作成する</h1>
+<div class="line-block">
+<div class="line">アプリ開発のプロジェクトやインフラ技術検証を要するプロジェクトを複数掛け持ちすると、それぞれ必要なアーキテクチャが異なるがゆえ、</div>
+<div class="line">ローカルの開発環境/検証環境はぐちゃぐちゃになり、いったいこれはバグなのかバグでないのかよくわからないことになったり、</div>
+<div class="line">新しいメンバがきたときに開発環境/検証環境を準備するだけで数日間を要するってことも珍しくないと思います。</div>
+<div class="line">また、開発環境の構築といった側面だけでなく、商用環境もここ最近は仮想環境上に構築することが当たり前になっているので、</div>
+<div class="line">そういった側面でも、Vagrantの導入は問題解決につながると思い、ちょっとまとめてみました。</div>
+</div>
+<div class="section" id="virtualbox">
+<h2>1. VirtualBoxのインストール</h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> から Downloads -&gt; VirtualBox x.x.xx for Windows hosts -&gt; をクリックして、インストーラをダウンロードします(2014.12.23現在はVirtualBox-4.3.20-96997-Win.exeでした)。</div>
+<div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
+</div>
+<img alt="../../../_images/20141223-1-1.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-1.png"/>
+</div>
+<div class="section" id="id1">
+<h2>2. 環境変数の確認/設定</h2>
+<div class="line-block">
+<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\VirtualBox\”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+</div>
+<img alt="../../../_images/20141223-1-2.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-2.png"/>
+<ol class="arabic simple" start="3">
+<li>Vagrantのインストール</li>
+</ol>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://www.vagrantup.com/">https://www.vagrantup.com/</a> から Download -&gt; Windows -&gt; をクリックして、インストーラをダウンロードします(2014.12.23現在はvagrant_1.6.5.msiでした)。</div>
+<div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
+</div>
+<img alt="../../../_images/20141223-1-3.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-3.png"/>
+</div>
+<div class="section" id="id2">
+<h2>4. 環境変数の確認/設定</h2>
+<div class="line-block">
+<div class="line">環境変数のシステム変数の”Path”で、”{インストールドライブ}:\{インストールフォルダ}\Vagrant\bin\”にパスが通っていることを確認します。もし、通ってない場合は設定を追加します。</div>
+</div>
+<img alt="../../../_images/20141223-1-4.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-4.png"/>
+<div class="line-block">
+<div class="line">設定が完了したら、GitBashを起動し、以下のコマンドを実行すると、Vagrantがインストールされていることが確認できます。</div>
+<div class="line">参考：GitBashの設定 :doc: <a class="reference external" href="http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html">http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html</a></div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant --version
+Vagrant 1.6.5
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Vagrantを使って仮想マシンをクローン</li>
+</ol>
+<div class="line-block">
+<div class="line">では、Vagrantを使って、実際にVirtualBox上に仮想マシンをクローンしていきます。</div>
+<div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: <a class="reference external" href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a> より、</div>
+<div class="line">今回は、”CentOS 6.5 x86_64”とすることにします。</div>
+</div>
+<div class="section" id="id3">
+<h3>1) フォルダ作成</h3>
+<div class="line-block">
+<div class="line">GitBashでVagrantでクローンする仮想マシンを登録するフォルダを作成し、そこに移動します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ cd ~/
+$ mkdir -p vagrant
+$ cd ~/vagrant
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">“CentOS 6.5 x86_64”の仮想マシンを登録するフォルダを作成し、そこに移動します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ mkdir -p centos65x8664base
+$ cd ~/vagrant/centos65x8664base
+</pre></div>
+</div>
+</div>
+<div class="section" id="box">
+<h3>2) Boxファイルのダウンロード</h3>
+<div class="line-block">
+<div class="line">“CentOS 6.5 x86_64”のBoxファイルをダウンロードします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box add vagrant-centos65x8664 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+==&gt; box: Adding box 'centos65x8664base' (v0) for provider:
+box: Downloading: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+box: Progress: 100% (Rate: 3033k/s, Estimated time remaining: --:--:--)
+==&gt; box: Successfully added box 'centos65x8664base' (v0) for 'virtualbox'!
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Boxファイルがダウンロードできたら、以下のコマンドで、VagrantのBoxListに追加されていることを確認します。</div>
+<div class="line">“centsos65x8664base”はBox名、”virtualbox”はProviderを意味します。</div>
+<div class="line">“0”は”centos65x8664base”というBox名の中でそのBoxファイルがListの何番目かを意味するのかな…たぶん。ここはあんまし自信なし。</div>
+<div class="line">ちなみに、Boxファイルは、”{カレントドライブ}:\Users\{ユーザ名}\.vagrant.d\boxes\centos65x8664base\0\virtualbox”ダウンロードされています。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box list
+centos65x8664base (virtualbox, 0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>3) Boxファイルの初期化</h3>
+<div class="line-block">
+<div class="line">Boxファイルを初期化します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant init centos65x8664base
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">初期化すると、ダウンロードしたBoxファイルを、</div>
+<div class="line">指定されたBox名”centsos65x8664base”でProvider”virtualbox”に仮想マシンとして追加するためのVagrantfileと呼ばれる定義ファイルが作成されます。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ ls
+Vagrantfile
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">作成されたVagrantfileは以下のような定義が記載されています。</div>
+<div class="line">詳細はまた別途まとめたいと思います。ちなみに、以下はデフォルトの状態です。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "centos65x8664base"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  # config.vm.network "public_network"
+
+  # If true, then any SSH connections made will enable agent forwarding.
+  # Default value: false
+  # config.ssh.forward_agent = true
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Don't boot with headless mode
+  #   vb.gui = true
+  #
+  #   # Use VBoxManage to customize the VM. For example to change memory:
+  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+  # end
+  #
+  # View the documentation for the provider you're using for more
+  # information on available options.
+
+  # Enable provisioning with CFEngine. CFEngine Community packages are
+  # automatically installed. For example, configure the host as a
+  # policy server and optionally a policy file to run:
+  #
+  # config.vm.provision "cfengine" do |cf|
+  #   cf.am_policy_hub = true
+  #   # cf.run_file = "motd.cf"
+  # end
+  #
+  # You can also configure and bootstrap a client to an existing
+  # policy server:
+  #
+  # config.vm.provision "cfengine" do |cf|
+  #   cf.policy_server_address = "10.0.2.15"
+  # end
+
+  # Enable provisioning with Puppet stand alone.  Puppet manifests
+  # are contained in a directory path relative to this Vagrantfile.
+  # You will need to create the manifests directory and a manifest in
+  # the file default.pp in the manifests_path directory.
+  #
+  # config.vm.provision "puppet" do |puppet|
+  #   puppet.manifests_path = "manifests"
+  #   puppet.manifest_file  = "default.pp"
+  # end
+
+  # Enable provisioning with chef solo, specifying a cookbooks path, roles
+  # path, and data_bags path (all relative to this Vagrantfile), and adding
+  # some recipes and/or roles.
+  #
+  # config.vm.provision "chef_solo" do |chef|
+  #   chef.cookbooks_path = "../my-recipes/cookbooks"
+  #   chef.roles_path = "../my-recipes/roles"
+  #   chef.data_bags_path = "../my-recipes/data_bags"
+  #   chef.add_recipe "mysql"
+  #   chef.add_role "web"
+  #
+  #   # You may also specify custom JSON attributes:
+  #   chef.json = { mysql_password: "foo" }
+  # end
+
+  # Enable provisioning with chef server, specifying the chef server URL,
+  # and the path to the validation key (relative to this Vagrantfile).
+  #
+  # The Opscode Platform uses HTTPS. Substitute your organization for
+  # ORGNAME in the URL and validation key.
+  #
+  # If you have your own Chef Server, use the appropriate URL, which may be
+  # HTTP instead of HTTPS depending on your configuration. Also change the
+  # validation key to validation.pem.
+  #
+  # config.vm.provision "chef_client" do |chef|
+  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
+  #   chef.validation_key_path = "ORGNAME-validator.pem"
+  # end
+  #
+  # If you're using the Opscode platform, your validator client is
+  # ORGNAME-validator, replacing ORGNAME with your organization name.
+  #
+  # If you have your own Chef Server, the default validation client name is
+  # chef-validator, unless you changed the configuration.
+  #
+  #   chef.validation_client_name = "ORGNAME-validator"
+end
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>4) 仮想マシンの起動</h3>
+<div class="line-block">
+<div class="line">仮想マシンを起動します。</div>
+<div class="line">起動に失敗する場合は、BIOS設定で”Intel VTテクノロジー”などが無効になっている可能性があるので有効化しておいてください。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==&gt; default: Importing base box 'centos65x8664base'...
+==&gt; default: Matching MAC address for NAT networking...
+==&gt; default: Setting the name of the VM: centos65x8664base_default_1419175685395_89423
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==&gt; default: Forwarding ports...
+    default: 22 =&gt; 2222 (adapter 1)
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: Warning: Connection timeout. Retrying...
+    default: Warning: Remote connection disconnect. Retrying...
+==&gt; default: Machine booted and ready!
+==&gt; default: Checking for guest additions in VM...
+==&gt; default: Mounting shared folders...
+    default: /vagrant =&gt; {カレントドライブ}:/Users/{ユーザ名}/vagrant/centos65x8664base
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">仮想マシンが起動できたら、状態を確認します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">VirtulBoxを起動すると、以下のように仮想マシンが追加され起動中となっていることが確認できます。</div>
+</div>
+<img alt="../../../_images/20141223-1-5.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-5.png"/>
+</div>
+<div class="section" id="id6">
+<h3>5) 仮想マシンへのログイン/ログアウト</h3>
+<div class="line-block">
+<div class="line">仮想マシンにssh接続でログインします。</div>
+<div class="line">ユーザ名/パスワードは、vagrant/vagrantです。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant ssh
+[vagrant@centos65x8664base ~]$ cat /etc/issue|head -1
+CentOS release 6.5 (Final)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rootユーザにチェンジします。</div>
+<div class="line">ユーザ名/パスワードは、root/vagrantです。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>[vagrant@centos65x8664base ~]$ su root
+Password
+[root@centos65x8664base vagrant]#
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ログアウトします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>[root@centos65x8664base vagrant]# exit
+[vagrant@centos65x8664base ~]$ exit
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>6) 仮想マシンのシャットダウン</h3>
+<div class="line-block">
+<div class="line">ログアウトできたら、仮想マシンをシャットダウンします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant halt
+==&gt; default: Attempting graceful shutdown of VM...
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">仮想マシンがシャットダウンできたら、状態を確認します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant status
+Current machine states:
+
+default                   poweroff (virtualbox)
+
+The VM is powered off. To restart the VM, simply run `vagrant up`
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>仮想マシンの複製</li>
+</ol>
+<div class="line-block">
+<div class="line">ここまでは仮想マシンを作成する手順を記載しましたが、実際の使い方を考えると、</div>
+<div class="line">作成した仮想マシンをコピー元として、仮想マシンを複製(例えばその複製した仮想マシンを開発環境用1(Spring Boot/Java8アプリ)としたり)、</div>
+<div class="line">その複製した仮想マシンに追加パッケージやミドルウェアのインストールを実施し、それを配布するという感じになると思います。</div>
+<div class="line">したがって、ここでは仮想マシンをコピーする手順を説明します。</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>1) コピー元仮想マシンのBoxファイル作成</h3>
+<div class="line-block">
+<div class="line">コピー元仮想マシンのVagrantfileがあるフォルダに移動し、Boxファイルを作成します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ cd ~/vagrant/centos65x8664base
+$ vagrant package
+==&gt; default: Clearing any previously set forwarded ports...
+==&gt; default: Exporting VM...
+==&gt; default: Compressing package to: c:/Users/9656749/vagrant/centos65x8664base/package.box
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>2) 複製する仮想マシンのフォルダ作成</h3>
+<div class="line-block">
+<div class="line">複製する仮想マシンのフォルダを作成し、そこに移動します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ cd ~/vagrant
+$ mkdir -p centos65x8664dev1
+$ cd ~/vagrant/centos65x8664dev1
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>3) Boxファイルの取り込み</h3>
+<div class="line-block">
+<div class="line">コピー元仮想マシンで作成したBoxファイルを、複製する仮想マシンのフォルダに移動し、</div>
+<div class="line">このBoxファイルをVagrantのBoxListに追加します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ mv ~/vagrant/centos65x8664base/package.box ./
+$ vagrant box add centos65x8664dev1 package.box
+==&gt; box: Adding box 'centos65x8664dev1' (v0) for provider:
+    box: Downloading: file://c:/Users/9656749/vagrant/centos65x8664dev1/package.box
+    box: Progress: 100% (Rate: 267M/s, Estimated time remaining: --:--:--)
+==&gt; box: Successfully added box 'centos65x8664dev1' (v0) for 'virtualbox'!
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Boxファイルが取り込みできたら、以下のコマンドで、VagrantのBoxListに追加されていることを確認します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box list
+centos65x8664base (virtualbox, 0)
+centos65x8664dev1 (virtualbox, 0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>4) Boxファイルの初期化</h3>
+<div class="line-block">
+<div class="line">Boxファイルを初期化します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant init centos65x8664dev1
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+$ ls
+Vagrantfile
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>5) 仮想マシンの起動</h3>
+<div class="line-block">
+<div class="line">仮想マシンを起動します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==&gt; default: Importing base box 'centos65x8664dev1'...
+==&gt; default: Matching MAC address for NAT networking...
+==&gt; default: Setting the name of the VM: centos65x8664dev1_default_141917668894_96328
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==&gt; default: Forwarding ports...
+    default: 22 =&gt; 2222 (adapter 1)
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: Warning: Connection timeout. Retrying...
+==&gt; default: Machine booted and ready!
+==&gt; default: Checking for guest additions in VM...
+==&gt; default: Mounting shared folders...
+    default: /vagrant =&gt; {カレントドライブ}:/Users/{ユーザ名}/vagrant/centos65x8664dev1
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">仮想マシンが起動できたら、状態を確認します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">VirtulBoxを起動すると、以下のように仮想マシンが追加され起動中となっていることが確認できます。</div>
+</div>
+<img alt="../../../_images/20141223-1-6.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-6.png"/>
+</div>
+<div class="section" id="id13">
+<h3>6) 仮想マシンへのログイン/ログアウト</h3>
+<div class="line-block">
+<div class="line">仮想マシンにssh接続でログインします。</div>
+<div class="line">ユーザ名/パスワードは、vagrant/vagrantです。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant ssh
+[vagrant@centos65x8664dev1 ~]$ cat /etc/issue|head -1
+CentOS release 6.5 (Final)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rootユーザにチェンジします。</div>
+<div class="line">ユーザ名/パスワードは、root/vagrantです。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>[vagrant@centos65x8664dev1 ~]$ su root
+Password
+[root@centos65x8664dev1 vagrant]#
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ログアウトします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>[root@centos65x8664dev1 vagrant]# exit
+[vagrant@centos65x8664dev1 ~]$ exit
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>7) 仮想マシンのシャットダウン</h3>
+<div class="line-block">
+<div class="line">ログアウトできたら、仮想マシンをシャットダウンします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant halt
+==&gt; default: Attempting graceful shutdown of VM...
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">仮想マシンがシャットダウンできたら、状態を確認します。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant status
+Current machine states:
+
+default                   poweroff (virtualbox)
+
+The VM is powered off. To restart the VM, simply run `vagrant up`
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>8) 仮想マシンの削除</h3>
+<div class="line-block">
+<div class="line">複製した仮想マシンが不要になったら、削除をします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant destroy
+default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==&gt; default: Destroying VM and associated drives...
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">仮想マシンを削除すると、VirtualBox上から仮想マシンは消えます。</div>
+</div>
+<img alt="../../../_images/20141223-1-7.png" src="http://galoisvsnaoya.github.com/blog/_images/20141223-1-7.png"/>
+<div class="line-block">
+<div class="line">ですが、まだ、VagrantのBoxListから削除されているわけではありません。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box list
+centos65x8664base (virtualbox, 0)
+centos65x8664dev1 (virtualbox, 0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>9) Boxの削除</h3>
+<div class="line-block">
+<div class="line">BoxListから削除するには、以下でBoxをremoveします。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box remove centos65x8664dev1 virtualbox
+WARNING: The second argument to `vagrant box remove`
+is deprecated. Please use the --provider flag. This
+feature will stop working in the next version.
+Removing box 'centos65x8664dev1' (v0) with provider 'virtualbox'...
+
+$ vagrant box list
+centos65x8664base (virtualbox, 0)
+</pre></div>
+</div>
+</div>
+</div>
+]]></description>
+            <category><![CDATA[ tech ]]></category>
+             <pubDate>Tue, 23 Dec 2014 00:00:00 +0900</pubDate>
+        </item>
+    
         <item>
             <link>http://galoisvsnaoya.github.com/blog/2014/12/15/20141215-1.html</link>
             <guid>http://galoisvsnaoya.github.com/blog/2014/12/15/20141215-1.html</guid>
-            <title><![CDATA[Windowsのシェル環境を整える]]></title>
-            <description><![CDATA[<h1>Windowsのシェル環境を整える</h1>
+            <title><![CDATA[WindowsのBashシェル環境を整える]]></title>
+            <description><![CDATA[<h1>WindowsのBashシェル環境を整える</h1>
 <div class="line-block">
 <div class="line">Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。</div>
-<div class="line">そこで、WindowsでもBashシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。</div>
+<div class="line">そこで、Windowsでもシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。</div>
 <div class="line">これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。</div>
 <div class="line">※ただ、PowerShellはPowerCLIっていうvSphere(ESXi等)の管理ツールの言語になってたりするので、これはこれで重要。いつかまとめよう…。</div>
 </div>
@@ -69,7 +626,7 @@ diff - GNU diffutils version 2.7
 <h2>4. MinGWのインストール</h2>
 <div class="line-block">
 <div class="line"><a class="reference external" href="http://www.mingw.org/">http://www.mingw.org/</a> から Downloads -&gt; Download mingw-get-setup.exe (86.5 kB) をクリックして、インストーラをダウンロードします(2014.12.15現在はModifiedが2013-10-04でした)。</div>
-<div class="line">インストーラを実行します(すべてデフォルト設定でOKです)。</div>
+<div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
 </div>
 <img alt="../../../_images/20141215-1-5.png" src="http://galoisvsnaoya.github.com/blog/_images/20141215-1-5.png"/>
 </div>
@@ -93,9 +650,8 @@ diff - GNU diffutils version 2.7
 <li>msys-popt-0.dll (Package：msys-libport/Class:dll)</li>
 </ul>
 <div class="line-block">
-<div class="line">ちなみに、</div>
-<div class="line">iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界)、</div>
-<div class="line">intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界)、</div>
+<div class="line">ちなみに、iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界の話)、</div>
+<div class="line">intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界の話)、</div>
 <div class="line">poptは入力されたコマンドラインを構文解析するためのライブラリです。</div>
 </div>
 <img alt="../../../_images/20141215-1-7.png" src="http://galoisvsnaoya.github.com/blog/_images/20141215-1-7.png"/>

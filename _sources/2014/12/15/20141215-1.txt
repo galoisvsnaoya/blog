@@ -1,8 +1,8 @@
-Windowsのシェル環境を整える
+WindowsのBashシェル環境を整える
 ===================================
 
 | Windowsのシェル環境といえば、昔でいうとCmd、今ならPowerShellだけど、なかなかどうして両者ともLinuxとコマンドが違ってたりして使いづらいなぁと。
-| そこで、WindowsでもBashシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。
+| そこで、Windowsでもシェルが使えるように、GitBash+MinGWでWindowsのシェル環境を整えたいと思います。
 | これだと、まぁ本来の目的であるGitHubへの操作や、MinGWを導入することによってよく利用するrsyncコマンドなどがWindowsでも利用しやすくなるかと思います。
 | ※ただ、PowerShellはPowerCLIっていうvSphere(ESXi等)の管理ツールの言語になってたりするので、これはこれで重要。いつかまとめよう…。
 
@@ -61,7 +61,7 @@ Windowsのシェル環境を整える
 ----------------------
 
 | http://www.mingw.org/ から Downloads -> Download mingw-get-setup.exe (86.5 kB) をクリックして、インストーラをダウンロードします(2014.12.15現在はModifiedが2013-10-04でした)。
-| インストーラを実行します(すべてデフォルト設定でOKです)。
+| すべてデフォルト設定で、インストーラを実行します。
 
 .. image:: /img/20141215-1-5.png
 
@@ -85,9 +85,8 @@ Windowsのシェル環境を整える
 * msys-intl-8.dll (Package：msys-libintl/Class:dll)
 * msys-popt-0.dll (Package：msys-libport/Class:dll)
 
-| ちなみに、
-| iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界)、
-| intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界)、
+| ちなみに、iconvは入力された文字列のための文字コードを変換するライブラリ(UTF-8とかSJISとかその世界の話)、
+| intlは入力された文字列のための国際化ライブラリ(日本語とか英語とかその世界の話)、
 | poptは入力されたコマンドラインを構文解析するためのライブラリです。
 
 .. image:: /img/20141215-1-7.png
@@ -125,5 +124,5 @@ Windowsのシェル環境を整える
 
 .. author:: default
 .. categories:: tech
-.. tags:: git
+.. tags:: shell
 .. comments::
