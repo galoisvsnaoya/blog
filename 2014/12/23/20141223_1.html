@@ -65,16 +65,16 @@
     <div class="section" id="vagrant">
 <h1>Vagrantで仮想マシンを作成する</h1>
 <div class="line-block">
-<div class="line">アプリ開発のプロジェクトやインフラ技術検証を要するプロジェクトを複数掛け持ちすると、それぞれ必要なアーキテクチャが異なるがゆえ、</div>
-<div class="line">ローカルの開発環境/検証環境はぐちゃぐちゃになり、いったいこれはバグなのかバグでないのかよくわからないことになったり、</div>
-<div class="line">新しいメンバがきたときに開発環境/検証環境を準備するだけで数日間を要するってことも珍しくないと思います。</div>
-<div class="line">また、開発環境の構築といった側面だけでなく、商用環境もここ最近は仮想環境上に構築することが当たり前になっているので、</div>
-<div class="line">そういった側面でも、Vagrantの導入は問題解決につながると思い、ちょっとまとめてみました。</div>
+<div class="line">アプリ開発のプロジェクトやインフラ技術検証を要するプロジェクトを複数掛け持ちすると、それぞれ必要なアーキテクチャが異なるがゆえ、
+ローカルの開発環境/検証環境はぐちゃぐちゃになり、いったいこれはバグなのかバグでないのかよくわからないことになったり、
+新しいメンバがきたときに開発環境/検証環境を準備するだけで数日間を要するってことも珍しくないと思います。</div>
+<div class="line">また、開発環境の構築といった側面だけでなく、商用環境もここ最近は仮想環境上に構築することが当たり前になっているので、
+そういった側面でも、Vagrantの導入は問題解決につながると思い、ちょっとまとめてみました。</div>
 </div>
 <div class="section" id="virtualbox">
 <h2>1. VirtualBoxのインストール</h2>
 <div class="line-block">
-<div class="line"><a class="reference external" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> から Downloads -&gt; VirtualBox x.x.xx for Windows hosts -&gt; をクリックして、インストーラをダウンロードします(2014.12.23現在はVirtualBox-4.3.20-96997-Win.exeでした)。</div>
+<div class="line"><a class="reference external" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> から Downloads -&gt; VirtualBox x.x.xx for Windows hosts をクリックして、インストーラをダウンロードします(2014.12.23現在はVirtualBox-4.3.20-96997-Win.exeでした)。</div>
 <div class="line">すべてデフォルト設定で、インストーラを実行します。</div>
 </div>
 <img alt="../../../_images/20141223-1-1.png" src="../../../_images/20141223-1-1.png" />
@@ -113,8 +113,8 @@ Vagrant 1.6.5
 <h2>5. Vagrantを使って仮想マシンをクローン</h2>
 <div class="line-block">
 <div class="line">では、Vagrantを使って、実際にVirtualBox上に仮想マシンをクローンしていきます。</div>
-<div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: <a class="reference external" href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a> より、</div>
-<div class="line">今回は、&#8221;CentOS 6.5 x86_64&#8221;とすることにします。</div>
+<div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: <a class="reference external" href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a> より、
+今回は、&#8221;CentOS 6.5 x86_64&#8221;とすることにします。</div>
 </div>
 <div class="section" id="id5">
 <h3>1) フォルダ作成</h3>
@@ -311,7 +311,7 @@ end
 <h3>4) 仮想マシンの起動</h3>
 <div class="line-block">
 <div class="line">仮想マシンを起動します。</div>
-<div class="line">起動に失敗する場合は、BIOS設定で&#8221;Intel VTテクノロジー&#8221;などが無効になっている可能性があるので有効化しておいてください。</div>
+<div class="line">起動に失敗する場合は、BIOS設定で&#8221;Intel VT&#8221;などが無効になっている可能性があるので有効化しておいてください。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant up
 Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
@@ -358,8 +358,7 @@ simply run `vagrant up`.
 <div class="section" id="id8">
 <h3>5) 仮想マシンへのログイン/ログアウト</h3>
 <div class="line-block">
-<div class="line">仮想マシンにssh接続でログインします。</div>
-<div class="line">ユーザ名/パスワードは、vagrant/vagrantです。</div>
+<div class="line">仮想マシンにssh接続でログインします。ユーザ名/パスワードは、vagrant/vagrantです。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant ssh
 [vagrant@centos65x8664base ~]$ cat /etc/issue|head -1
@@ -367,8 +366,7 @@ CentOS release 6.5 (Final)
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">rootユーザにチェンジします。</div>
-<div class="line">ユーザ名/パスワードは、root/vagrantです。</div>
+<div class="line">rootユーザにスイッチします。ユーザ名/パスワードは、root/vagrantです。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>[vagrant@centos65x8664base ~]$ su root
 Password
@@ -408,9 +406,9 @@ The VM is powered off. To restart the VM, simply run `vagrant up`
 <div class="section" id="id10">
 <h2>6. 仮想マシンの複製</h2>
 <div class="line-block">
-<div class="line">ここまでは仮想マシンを作成する手順を記載しましたが、実際の使い方を考えると、</div>
-<div class="line">作成した仮想マシンをコピー元として、仮想マシンを複製(例えばその複製した仮想マシンを開発環境用1(Spring Boot/Java8アプリ)としたり)、</div>
-<div class="line">その複製した仮想マシンに追加パッケージやミドルウェアのインストールを実施し、それを配布するという感じになると思います。</div>
+<div class="line">ここまでは仮想マシンを作成する手順を記載しましたが、実際の使い方を考えると、
+作成した仮想マシンをコピー元として、仮想マシンを複製(例えばその複製した仮想マシンを開発環境用1(Spring Boot/Java8アプリ)としたり)、
+その複製した仮想マシンに追加パッケージやミドルウェアのインストールを実施し、それを配布するという感じになると思います。</div>
 <div class="line">したがって、ここでは仮想マシンをコピーする手順を説明します。</div>
 </div>
 <div class="section" id="id11">
@@ -422,7 +420,7 @@ The VM is powered off. To restart the VM, simply run `vagrant up`
 $ vagrant package
 ==&gt; default: Clearing any previously set forwarded ports...
 ==&gt; default: Exporting VM...
-==&gt; default: Compressing package to: c:/Users/9656749/vagrant/centos65x8664base/package.box
+==&gt; default: Compressing package to: {カレントドライブ}:/Users/{ユーザ名}/vagrant/centos65x8664base/package.box
 </pre></div>
 </div>
 </div>
@@ -440,13 +438,11 @@ $ cd ~/vagrant/centos65x8664dev1
 <div class="section" id="id13">
 <h3>3) Boxファイルの取り込み</h3>
 <div class="line-block">
-<div class="line">コピー元仮想マシンで作成したBoxファイルを、複製する仮想マシンのフォルダに移動し、</div>
-<div class="line">このBoxファイルをVagrantのBoxListに追加します。</div>
+<div class="line">コピー元仮想マシンで作成したBoxファイルを、複製する仮想マシンのフォルダに移動し、このBoxファイルをVagrantのBoxListに追加します。</div>
 </div>
-<div class="highlight-html"><div class="highlight"><pre>$ mv ~/vagrant/centos65x8664base/package.box ./
-$ vagrant box add centos65x8664dev1 package.box
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box add centos65x8664dev1 ~/vagrant/centos65x8664base/package.box
 ==&gt; box: Adding box &#39;centos65x8664dev1&#39; (v0) for provider:
-    box: Downloading: file://c:/Users/9656749/vagrant/centos65x8664dev1/package.box
+    box: Downloading: file://{カレントドライブ}:/Users/{ユーザ名}/vagrant/centos65x8664base/package.box
     box: Progress: 100% (Rate: 267M/s, Estimated time remaining: --:--:--)
 ==&gt; box: Successfully added box &#39;centos65x8664dev1&#39; (v0) for &#39;virtualbox&#39;!
 </pre></div>
@@ -525,8 +521,7 @@ simply run `vagrant up`.
 <div class="section" id="id16">
 <h3>6) 仮想マシンへのログイン/ログアウト</h3>
 <div class="line-block">
-<div class="line">仮想マシンにssh接続でログインします。</div>
-<div class="line">ユーザ名/パスワードは、vagrant/vagrantです。</div>
+<div class="line">仮想マシンにssh接続でログインします。ユーザ名/パスワードは、vagrant/vagrantです。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>$ vagrant ssh
 [vagrant@centos65x8664dev1 ~]$ cat /etc/issue|head -1
@@ -534,8 +529,7 @@ CentOS release 6.5 (Final)
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">rootユーザにチェンジします。</div>
-<div class="line">ユーザ名/パスワードは、root/vagrantです。</div>
+<div class="line">rootユーザにチェンジします。ユーザ名/パスワードは、root/vagrantです。</div>
 </div>
 <div class="highlight-html"><div class="highlight"><pre>[vagrant@centos65x8664dev1 ~]$ su root
 Password
@@ -571,8 +565,11 @@ The VM is powered off. To restart the VM, simply run `vagrant up`
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="id18">
-<h3>8) 仮想マシンの削除</h3>
+<h2>7. 仮想マシンの削除</h2>
+<div class="section" id="id19">
+<h3>1) 仮想マシンの削除</h3>
 <div class="line-block">
 <div class="line">複製した仮想マシンが不要になったら、削除をします。</div>
 </div>
@@ -594,8 +591,8 @@ centos65x8664dev1 (virtualbox, 0)
 </pre></div>
 </div>
 </div>
-<div class="section" id="id19">
-<h3>9) Boxの削除</h3>
+<div class="section" id="id20">
+<h3>2) Boxの削除</h3>
 <div class="line-block">
 <div class="line">BoxListから削除するには、以下でBoxをremoveします。</div>
 </div>
