@@ -56,8 +56,8 @@ Vagrantで仮想マシンを作成する
 --------------------------------------
 
 | では、Vagrantを使って、実際にVirtualBox上に仮想マシンをクローンしていきます。
-| 作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: http://www.vagrantbox.es/ より、
-  今回は、"CentOS 6.5 x86_64"とすることにします。
+| 作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)のリポジトリサイトhttp://www.vagrantbox.es/ より、
+  今回は"CentOS 6.5 x86_64"とすることにします。
 
 1) フォルダ作成
 ~~~~~~~~~~~~~~~
@@ -86,7 +86,7 @@ Vagrantで仮想マシンを作成する
 
 .. code-block:: html
 
-   $ vagrant box add vagrant-centos65x8664 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+   $ vagrant box add centos65x8664base https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
    ==> box: Adding box 'centos65x8664base' (v0) for provider:
    box: Downloading: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
    box: Progress: 100% (Rate: 3033k/s, Estimated time remaining: --:--:--)

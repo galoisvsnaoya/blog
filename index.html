@@ -114,8 +114,8 @@ Vagrant 1.6.5
 <h2>5. Vagrantを使って仮想マシンをクローン</h2>
 <div class="line-block">
 <div class="line">では、Vagrantを使って、実際にVirtualBox上に仮想マシンをクローンしていきます。</div>
-<div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)リポジトリサイト :doc: <a class="reference external" href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a> より、
-今回は、”CentOS 6.5 x86_64”とすることにします。</div>
+<div class="line">作成する仮想マシンは、Vagrant用の仮想マシンテンプレート(Vagrantの世界ではこれをBoxファイルと呼びます)のリポジトリサイトhttp://www.vagrantbox.es/ より、
+今回は”CentOS 6.5 x86_64”とすることにします。</div>
 </div>
 <div class="section" id="id5">
 <h3>1) フォルダ作成</h3>
@@ -140,7 +140,7 @@ $ cd ~/vagrant/centos65x8664base
 <div class="line-block">
 <div class="line">“CentOS 6.5 x86_64”のBoxファイルをダウンロードします。</div>
 </div>
-<div class="highlight-html"><div class="highlight"><pre>$ vagrant box add vagrant-centos65x8664 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+<div class="highlight-html"><div class="highlight"><pre>$ vagrant box add centos65x8664base https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 ==&gt; box: Adding box 'centos65x8664base' (v0) for provider:
 box: Downloading: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 box: Progress: 100% (Rate: 3033k/s, Estimated time remaining: --:--:--)
