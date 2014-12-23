@@ -44,7 +44,7 @@ Vagrantで仮想マシンを作成する
 
 | 
 | 設定が完了したら、GitBashを起動し、以下のコマンドを実行すると、Vagrantがインストールされていることが確認できます。
-| `参考：WindowsのBashシェル環境を整える<http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html>`
+| `参考：WindowsのBashシェル環境を整える <http://galoisvsnaoya.github.io/blog/2014/12/15/20141215-1.html>`_
 
 .. code-block:: html
 
